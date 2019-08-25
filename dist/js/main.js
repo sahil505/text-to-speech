@@ -33,3 +33,43 @@ getVoices();
 if (synth.onvoiceschanged !== undefined) {
   synth.onvoiceschanged = getVoices;
 }
+
+// Speak
+const speak = () => {
+  // Check if speaking
+  if (synth.speaking) {
+    console.error('Already Speaking...');
+    return;
+  }
+  // Check if input text in not null
+  if (textInput !== '') {
+    // Get speak text
+    const speakText = new SpeechSynthesisUtterance(textInput.value);
+    // Speak end
+    speakText.onend = e => {
+      console.log('Done speaking...');
+    }
+
+    // Speak error
+    speakText.onerror = e => {
+      console.error('Something went wrong!');
+    }
+
+    // Selected voice
+    const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-name');
+
+    // Loop through voices
+    voices.forEach(voice => {
+      if (voice.name === selectedVoice) {
+        speakText.voice = voice;
+      }
+    });
+
+    // Set pitch and rate
+    speakText.rate = rate.value;
+    speakText.pitch = pitch.value;
+
+    // Speak
+    synth.speak(speakText);
+  }
+}

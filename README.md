@@ -1,2 +1,5 @@
 # text-to-speech
-Text synthesis application using vanilla JavaScript and the Web Speech API
+
+> Type and speak app with speech synthesis using the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
+
+[App Demo](https://sahil505.github.io/text-to-speech)

@@ -77,14 +77,17 @@ const speak = () => {
 // Event Listners
 
 // Text Form submit
-textForm.addEventListner('submit', e => {
+textForm.addEventListener('submit', e => {
   e.preventDefault();
   speak();
   textInput.blur();
 });
 
 // Rate value change
-rate.addEventListner('change', e => rateValue.textContent = rate.value);
+rate.addEventListener('change', e => rateValue.textContent = rate.value);
 
 // Pitch value change
-pitch.addEventListner('change', e => pitchValue.textContent = pitch.value);
+pitch.addEventListener('change', e => pitchValue.textContent = pitch.value);
+
+// Voice select change
+voiceSelect.addEventListener('change', e => speak());
